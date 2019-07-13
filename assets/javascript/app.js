@@ -20,6 +20,12 @@ function buildQueryURL(){
         })
       }).then(function (response) {
         console.log(JSON.parse(response))
+      
+        var results = parsedResponse._embedded.events;
+
+        for (var i = 0; results.length; i++) {
+            console.log(results[i]);
+        }
       })
 
 };

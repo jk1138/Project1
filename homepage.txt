@@ -1,0 +1,12 @@
+TripPlanner
+
+>>Travel period and Location, amount of time to spend
+>>Parameters set
+
+>>Events during the period of travel listed down below
+
+>>Flights information
+
+>>Weather API logged for dates set up
+
+>>Logging each trip to the Firebase

@@ -1,4 +1,5 @@
 console.log ("hi");
+console.log("testing git pushes");
 
 
 function buildQueryURL(){

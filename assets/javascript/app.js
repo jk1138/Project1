@@ -34,5 +34,24 @@ $("#eventfinder").on("click", function(){
     buildQueryURL();
 })
 
+for (var i = 0; i < results.length; i++) {
+  console.log(results[i]);
 
+  var data = results[i];
+  var pName = $("<p>").html(data.name);
+  var pDates = $("<p>").html(data.dates.start.localDate);
+  var pTime = $("<p>").html(data.dates.start.localTime);
+  var pVenue = $("<p>").html(data._embedded.venues[0].name)
+  var img = $("<img>").attr("src",data.images[0].url)
+  // var divImg = $("<div>").append(img)
+  
 
+  
+
+  var newRow = $("<div>").addClass("row")
+  $(newRow).append(img)
+  $(newRow).append(pName);
+  $(newRow).append(pDates);
+  $(newRow).append(pTime);
+  $(newRow).append(pVenue);
+  $("#eventResults").append(newRow);

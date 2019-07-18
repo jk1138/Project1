@@ -1,5 +1,6 @@
-console.log("hi");
-
+console.log ("hi");
+console.log("testing git pushes");
+console.log ("whats going on?!?!?!?!")
 
 function buildQueryURL() {
 

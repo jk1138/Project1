@@ -3,13 +3,22 @@ let weatherDate = '';
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
 
-  var localeSearch = "&city=" + $("#location").val().trim();
-  var dateSearch = "&startDateTime=" + $("#startDate").val().trim();
-  var keywordSearch = "&keyword=" + $("#keyword").val().trim();
-  var endDate = "&endDateTime=" + $("#endDate").val().trim();
-  console.log(dateSearch)
+  var localeSearch = "&city=" + $("#location").val();
+  var dateSearch = "&startDateTime=" + $("#startdate").val();
+  var keywordSearch = "&keyword=" + $("#eventFinder").val();
 
-  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + dateSearch + endDate + "&radius=15&units=miles";
+  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + dateSearch + "&radius=15&units=miles";
+
+
+  $.ajax({
+    url: 'https://cors-anywhere.herokuapp.com/' + queryURL,
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  }).then(function (response) {
+    console.log(response);
+
+    // console.log(JSON.parse(response))
+
+    var data = response
 
   $.ajax({
     url: "http://104.200.17.235:8081/cors/",

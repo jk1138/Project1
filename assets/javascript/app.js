@@ -71,9 +71,6 @@ function buildQueryURL() {
     }
 
     console.log(JSON.parse(response))
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 $("#eventfinder").on("click", function(){
     buildQueryURL();
   })
@@ -99,8 +96,7 @@ for (var i = 0; i < results.length; i++) {
   $(newRow).append(pTime);
   $(newRow).append(pVenue);
   $("#eventResults").append(newRow);
-};
-=======
+
 $("#eventfinder").on("click", function () {
   buildQueryURL();
 })
@@ -123,10 +119,6 @@ $("#eventfinder").on("click", function () {
 // $(newRow).append(pTime);
 // $(newRow).append(pVenue);
 // $("#eventResults").append(newRow);
->>>>>>> 5ce6a614a733453dc04a377bd4b6ed3a2d07e553
-=======
-  })
-}
 $("#eventFinder").on("click", function () {
   buildQueryURL();
 })
@@ -143,4 +135,3 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
->>>>>>> 6ef2752a3d5f6538a857baa653980d7e79716902

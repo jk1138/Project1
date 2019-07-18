@@ -1,6 +1,3 @@
-console.log("hi");
-
-
 function buildQueryURL() {
 
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";

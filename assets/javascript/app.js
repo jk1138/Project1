@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+console.log ("hi");
+console.log("testing git pushes");
+console.log ("whats going on?!?!?!?!")
+
+>>>>>>> 5ce6a614a733453dc04a377bd4b6ed3a2d07e553
 function buildQueryURL() {
 
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 let weatherDate = '';
 
->>>>>>> 6ef2752a3d5f6538a857baa653980d7e79716902
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
 

@@ -1,11 +1,6 @@
+let weatherDate = '';
 
-
-console.log("hi");
-console.log("testing git pushes");
-console.log("whats going on?!?!?!?!")
-let weatherDate = ''
 function buildQueryURL() {
-
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
 
   var localeSearch = "&city=" + $("#location").val().trim();
@@ -38,9 +33,6 @@ function buildQueryURL() {
     weatherQuery();
     $('#showEvents').empty()
     for (var i = 0; i < 20; i++) {
-
-
-
       var data = JSON.parse(response)
       var results = data._embedded.events
       console.log(results[i]);
@@ -71,16 +63,6 @@ function buildQueryURL() {
 
     console.log(JSON.parse(response))
 
-
-    var data = JSON.parse(response)
-    var results = data._embedded.events
-
-    var results = data._embedded.events;
-
-    for (var i = 0; i < 20; i++) {
-      console.log(results[i]);
-    }
-
   })
 }
 $("#eventFinder").on("click", function () {
@@ -99,6 +81,3 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-
-

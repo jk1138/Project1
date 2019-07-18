@@ -33,7 +33,7 @@ function buildQueryURL(){
 
 $("#eventfinder").on("click", function(){
     buildQueryURL();
-})
+  })
 
 for (var i = 0; i < results.length; i++) {
   console.log(results[i]);
@@ -56,3 +56,4 @@ for (var i = 0; i < results.length; i++) {
   $(newRow).append(pTime);
   $(newRow).append(pVenue);
   $("#eventResults").append(newRow);
+};

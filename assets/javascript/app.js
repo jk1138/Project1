@@ -1,15 +1,14 @@
-console.log ("hi");
-
-
 function buildQueryURL(){
 
     apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
 
     var localeSearch ="&city=" + $("#location").val().trim();
-    // var dateSearch ="&startDateTime=" + $("#startdate").val();
+    var dateSearch ="&startDateTime=" + JSON.stringify($("#startDate").val());
     var keywordSearch ="&keyword=" + $("#keyword").val().trim();
 
-    queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
+    console.log(dateSearch);
+
+    queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + dateSearch + "&radius=15&units=miles";
 
     $.ajax({
         url: "http://104.200.17.235:8081/cors/",
@@ -24,7 +23,6 @@ function buildQueryURL(){
         var results = JSON.parse(response)._embedded.events;
 
         for (var i = 0; i < results.length; i++) {
-            console.log(results[i]);
 
             var eventName = $("<h4>").html(results[i].name);
             eventName.addClass("card-title");
@@ -52,7 +50,8 @@ function buildQueryURL(){
             cardHeaderDiv.html(eventIMG);
             cardHeaderDiv.append(cardBodyDiv);
             mainCardDiv.append(cardHeaderDiv);
-            $("#results-div").append(mainCardDiv);
+            console.log(mainCardDiv)
+            $("#eventResults").append(mainCardDiv);
 
         }
       })

@@ -1,8 +1,20 @@
+    
 body {
-    background-color: white;
+  background-color: white;
 }
 
-  .custom-input {
-    height: 30px;
-    width: 60px;
-  }
+.card {
+position: absolute;
+top:100px; 
+right: 150px;
+opacity: .95;
+}
+
+.eventfinder {
+  position: relative;
+  width:100%;
+  height:70px;
+  background-color:white;
+  padding:5px;
+  bottom:0px;
+}

@@ -16,3 +16,13 @@ body {
 
 
 
+.result:hover{
+  background-color: orange;
+}
+
+.rowstyle{
+  padding: 10px;
+  width: 70%;
+}
+
+

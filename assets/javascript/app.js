@@ -48,13 +48,14 @@ function buildQueryURL() {
       var data = results[i];
    
       weatherDate = data.dates.start.localDate
-
-      var pName = $("<p>").text(data.name).addClass('col')
-      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
-      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
-      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col')
+      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button")
+      var pName = $("<p>").text(data.name).addClass('col-md-2')
+      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col-md-2')
+      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col-md-1')
+      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col-md-1')
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
-      var divImg = $("<div>").append(img).addClass('col')
+      var divImg = $("<div>").append(img).addClass('col-md-2')
+
 
 
 
@@ -65,6 +66,7 @@ function buildQueryURL() {
       $(newRow).append(pDates);
       $(newRow).append(pTime);
       $(newRow).append(pVenue);
+      $(newRow).append(pButton)
       $("#showEvents").append(newRow);
 
     }
@@ -100,5 +102,10 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+$('.weather_button').on("click", function(){
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+ 
+})
 

@@ -7,7 +7,7 @@ function buildQueryURL() {
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#eventFinder").val();
 
-  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "&startDateTime=20190720" + "&radius=15&units=miles";
+  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
 
 
   $.ajax({
@@ -70,7 +70,7 @@ function buildQueryURL() {
 
 
       //  .addClass("row")
-      var newRow = $("<div>").addClass('row')
+      var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto');
       $(newRow).append(divImg)
       $(newRow).append(pName);
       $(newRow).append(pDates);
@@ -80,7 +80,7 @@ function buildQueryURL() {
 
     }
 
-    console.log(JSON.parse(response))
+    console.log(response)
 
   })
 };

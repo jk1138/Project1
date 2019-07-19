@@ -14,6 +14,9 @@ function buildQueryURL() {
     url: 'https://cors-anywhere.herokuapp.com/' + queryURL,
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
   }).then(function (response) {
+    $('html, body').animate({
+      scrollTop: $("#showEvents").offset().top
+  }, 2000);
     console.log(response);
 
 
@@ -25,6 +28,7 @@ $.ajax({
   url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
   headers: { 'X-Requested-With': 'XMLHttpRequest' },
 }).then(function (response) {
+
   console.log(response);
 })
     // console.log(JSON.parse(response))
@@ -67,8 +71,8 @@ $.ajax({
    
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
-      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
-      var pButtonTicket = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
+      var pButton = $("<button>").addClass("btn btn-outline-light btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
+      var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
       var pName = $("<p>").text(data.name).addClass('col')
       var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
@@ -97,7 +101,9 @@ $.ajax({
     $(".ticket_button").on("click", function(){
    
       var checkAttrTicket = $(this).attr("link")
-      alert(checkAttrTicket)
+      // window.location.href = checkAttrTicket
+      window.open(checkAttrTicket, '_blank');
+      
      
     })
     console.log(response)

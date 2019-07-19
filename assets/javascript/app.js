@@ -3,6 +3,7 @@
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
   var localeSearch = "&city=" + $("#location").val();
+  var weatherLocale = $("#location").val();
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#eventFinder").val();
 
@@ -17,7 +18,15 @@ function buildQueryURL() {
 
 
 
-
+// weather api 
+// weatherDate
+var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + weatherLocale + "&APPID=73aa9f49c204f7ee3c55d47346f4224a"
+$.ajax({
+  url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
+  headers: { 'X-Requested-With': 'XMLHttpRequest' },
+}).then(function (response) {
+  console.log(response);
+})
     // console.log(JSON.parse(response))
 
     // var data = response
@@ -56,8 +65,10 @@ function buildQueryURL() {
       console.log(results[i]);
       var data = results[i];
    
-      weatherDate = data.dates.start.localDate
-      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button")
+      var weatherDate = data.dates.start.localDate
+      console.log(weatherDate)
+      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
+      var pButtonTicket = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
       var pName = $("<p>").text(data.name).addClass('col')
       var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
@@ -72,9 +83,23 @@ function buildQueryURL() {
       $(newRow).append(pTime);
       $(newRow).append(pVenue);
       $(newRow).append(pButton)
+      $(newRow).append(pButtonTicket)
       $("#showEvents").append(newRow);
+      
     }
+    $(".weather_button").on("click", function(){
+   
+      var checkAttr = $(this).attr("date")
+      alert(checkAttr)
+     
+    })
 
+    $(".ticket_button").on("click", function(){
+   
+      var checkAttrTicket = $(this).attr("link")
+      alert(checkAttrTicket)
+     
+    })
     console.log(response)
 
   })
@@ -82,6 +107,7 @@ function buildQueryURL() {
 
 
 $("#eventFinder").on("click", function () {
+  
   buildQueryURL();
 })
 // Your web app's Firebase configuration
@@ -97,5 +123,17 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+var localeSearch = "&city=" + $("#location").val();
+// $.ajax({
+//   type: "POST",
+//   url: "https://api.openweathermap.org/data/2.5/weather?q=" + localeSearch + "&APPID=73aa9f49c204f7ee3c55d47346f4224a" + "'",
+//   dataType: "json",
+//   success: function (result, status, xhr) {
+      
+//     console.log(result)
+//   },
+//   error: function (xhr, status, error) {
+//       alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+//   }
+// });
 

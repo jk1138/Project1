@@ -2,11 +2,25 @@ body {
     background-color: white;
 }
 
+.logo{
+  position: absolute;
+  top: 100%;
+  left:150px;
+}
+
 .card {
   position: absolute;
   top:100px; 
   right: 150px;
   opacity: .95;
+}
+.card2{
+  position: absolute;
+  top:100px; 
+  left: 150px;
+  opacity: .95;
+  background: transparent;
+  color:white;
 }
 
 .style {
@@ -18,10 +32,41 @@ body {
 
 .result:hover{
   background-color: orange;
+  opacity: 80%;
+  border: solid;
 }
 
 .rowstyle{
   padding: 10px;
-  width: 70%;
+  width: 90%;
+  text-align: center;
 }
 
+.resultfont{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+.filler{
+  background-color:rgb(187, 187, 187);
+}
+.filler2{
+  background-color: white;
+  border: solid;
+}
+
+.floatresults{
+  position: absolute;
+}
+
+.weather_button {
+  height: 30%;
+}
+
+<<<<<<< HEAD
+=======
+
+.ticket_button {
+  height: 30%;
+}
+>>>>>>> 2d08bda044127b2024df9c2aba59a1ec1507ff03

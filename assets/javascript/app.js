@@ -72,16 +72,8 @@ $.ajax({
 
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
-<<<<<<< HEAD
       var pButton = $("<button>").addClass("btn btn-outline-light btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
       var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
-      var pName = $("<p>").text(data.name).addClass('col')
-      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
-      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
-      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col')
-=======
-      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
-      var pButtonTicket = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
 
       weatherDate = data.dates.start.localDate
 
@@ -90,7 +82,6 @@ $.ajax({
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col').addClass('resultfont')
       var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col').addClass('resultfont')
 
->>>>>>> 86d3d8d8c1b4a22718b39de0c17954bd7a0cb34b
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('col')
       //  .addClass("row")

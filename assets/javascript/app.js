@@ -1,18 +1,28 @@
-let weatherDate = '';
+// let weatherDate = '';
+
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
   var localeSearch = "&city=" + $("#location").val();
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#eventFinder").val();
+
   queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
+
+
   $.ajax({
     url: 'https://cors-anywhere.herokuapp.com/' + queryURL,
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
   }).then(function (response) {
     console.log(response);
+
+
+
+
     // console.log(JSON.parse(response))
+
     // var data = response
   // });
+
   // $.ajax({
   //   url: "http://104.200.17.235:8081/cors/",
   //   method: "POST",
@@ -21,8 +31,12 @@ function buildQueryURL() {
   //     url: queryURL
   //   })
   // }).then(function (response) {
+
+
     // function weatherQuery() {
+
     //   // var weatherQueryURL = "'" + "https://api.openweathermap.org/data/2.5/weather?q=" + localeSearch + "&APPID=73aa9f49c204f7ee3c55d47346f4224a" + "'"
+
     //   // $.ajax({
     //   //   url: weatherQueryURL,
     //   //   method: "GET"
@@ -31,6 +45,10 @@ function buildQueryURL() {
     //   // });
     // }
     // weatherQuery();
+
+
+
+
     $('#showEvents').empty()
     for (var i = 0; i < 20; i++) {
       var data = response
@@ -47,7 +65,7 @@ function buildQueryURL() {
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('col')
       //  .addClass("row")
-      var newRow = $("<div>").addClass('row').attr('hover', 'background-color:yellow')
+      var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto');
       $(newRow).append(divImg)
       $(newRow).append(pName);
       $(newRow).append(pDates);
@@ -56,9 +74,13 @@ function buildQueryURL() {
       $(newRow).append(pButton)
       $("#showEvents").append(newRow);
     }
+
     console.log(response)
+
   })
 };
+
+
 $("#eventFinder").on("click", function () {
   buildQueryURL();
 })

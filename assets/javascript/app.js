@@ -5,7 +5,7 @@ function buildQueryURL() {
 
   var localeSearch = "&city=" + $("#location").val();
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
-  var keywordSearch = "&keyword=" + $("#eventFinder").val();
+  var keywordSearch = "&keyword=" + $("#keyword").val();
 
   queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
 
@@ -60,10 +60,10 @@ function buildQueryURL() {
    
       weatherDate = data.dates.start.localDate
 
-      var pName = $("<p>").text(data.name).addClass('col')
-      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
-      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
-      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col')
+      var pName = $("<p>").text(data.name).addClass('col').addClass('resultfont')
+      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col').addClass('resultfont')
+      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col').addClass('resultfont')
+      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col').addClass('resultfont')
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('col')
 

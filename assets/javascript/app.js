@@ -60,13 +60,13 @@ function buildQueryURL() {
    
       weatherDate = data.dates.start.localDate
 
+      
       var pName = $("<p>").text(data.name).addClass('col')
       var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
       var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col')
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('col')
-
 
 
       //  .addClass("row")
@@ -76,6 +76,7 @@ function buildQueryURL() {
       $(newRow).append(pDates);
       $(newRow).append(pTime);
       $(newRow).append(pVenue);
+
       $("#showEvents").append(newRow);
 
     }

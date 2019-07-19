@@ -1,13 +1,13 @@
-let weatherDate = '';
+// let weatherDate = '';
 
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
 
   var localeSearch = "&city=" + $("#location").val();
-  var dateSearch = "&startDateTime=" + $("#startdate").val();
+  // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#eventFinder").val();
 
-  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + dateSearch + "&radius=15&units=miles";
+  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "&startDateTime=20190720" + "&radius=15&units=miles";
 
 
   $.ajax({
@@ -16,33 +16,43 @@ function buildQueryURL() {
   }).then(function (response) {
     console.log(response);
 
+
+
+
     // console.log(JSON.parse(response))
 
-    var data = response
+    // var data = response
+  // });
 
-  $.ajax({
-    url: "http://104.200.17.235:8081/cors/",
-    method: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({
-      url: queryURL
-    })
-  }).then(function (response) {
-    function weatherQuery() {
+  // $.ajax({
+  //   url: "http://104.200.17.235:8081/cors/",
+  //   method: "POST",
+  //   contentType: "application/json",
+  //   data: JSON.stringify({
+  //     url: queryURL
+  //   })
+  // }).then(function (response) {
 
-      // var weatherQueryURL = "'" + "https://api.openweathermap.org/data/2.5/weather?q=" + localeSearch + "&APPID=73aa9f49c204f7ee3c55d47346f4224a" + "'"
 
-      // $.ajax({
-      //   url: weatherQueryURL,
-      //   method: "GET"
-      // }).then(function (response) {
-      //   console.log(response);
-      // });
-    }
-    weatherQuery();
+    // function weatherQuery() {
+
+    //   // var weatherQueryURL = "'" + "https://api.openweathermap.org/data/2.5/weather?q=" + localeSearch + "&APPID=73aa9f49c204f7ee3c55d47346f4224a" + "'"
+
+    //   // $.ajax({
+    //   //   url: weatherQueryURL,
+    //   //   method: "GET"
+    //   // }).then(function (response) {
+    //   //   console.log(response);
+    //   // });
+    // }
+    // weatherQuery();
+
+
+
+
     $('#showEvents').empty()
     for (var i = 0; i < 20; i++) {
-      var data = JSON.parse(response)
+      var data = response
       var results = data._embedded.events
       console.log(results[i]);
 
@@ -73,7 +83,9 @@ function buildQueryURL() {
     console.log(JSON.parse(response))
 
   })
-}
+};
+
+
 $("#eventFinder").on("click", function () {
   buildQueryURL();
 })

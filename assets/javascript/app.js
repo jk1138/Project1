@@ -1,4 +1,4 @@
-let weatherDate = '';
+// let weatherDate = '';
 
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
@@ -7,7 +7,7 @@ function buildQueryURL() {
   var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#eventFinder").val();
 
-  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + dateSearch + "&radius=15&units=miles";
+  queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "&radius=15&units=miles";
 
 
   $.ajax({
@@ -18,7 +18,7 @@ function buildQueryURL() {
 
     // console.log(JSON.parse(response))
 
-    var data = response
+    //  var data = response
 
   $.ajax({
     url: "http://104.200.17.235:8081/cors/",
@@ -73,7 +73,7 @@ function buildQueryURL() {
     console.log(JSON.parse(response))
 
   })
-}
+})}
 $("#eventFinder").on("click", function () {
   buildQueryURL();
 })
@@ -89,4 +89,4 @@ var firebaseConfig = {
   appId: "1:580863475932:web:a7813153dd7c134e"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig)

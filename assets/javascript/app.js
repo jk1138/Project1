@@ -1,4 +1,23 @@
 // let weatherDate = '';
+//______________________________________________________________________________
+
+var firebaseConfig = {
+  apiKey: "AIzaSyDoh9CiUaIkimUAiwFNae_B7mtxtegqjR4",
+  authDomain: "jjlcr-project1.firebaseapp.com",
+  databaseURL: "https://jjlcr-project1.firebaseio.com",
+  projectId: "jjlcr-project1",
+  storageBucket: "",
+  messagingSenderId: "574264784152",
+  appId: "1:574264784152:web:8405b45c7f783cc0"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+
+var eventStorage = {};
+
+//______________________________________________________________________________
 
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
@@ -54,7 +73,7 @@ function buildQueryURL() {
     for (var i = 0; i < 20; i++) {
       var data = response
       var results = data._embedded.events
-      console.log(results[i]);
+      // console.log(results[i]);
 
       var data = results[i];
    
@@ -65,23 +84,28 @@ function buildQueryURL() {
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col').addClass('resultfont')
       var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col').addClass('resultfont')
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
-      var divImg = $("<div>").append(img).addClass('col')
+      var divImg = $("<div>").append(img).addClass('col');
 
+       eventStorage = {
+        name: data.name,
+        date: data.dates.start.localDate,
+        time: data.dates.start.localTime,
+        venue: data._embedded.venues[0].name,
+        image: data.images[0].url,
+      }
 
-
-      //  .addClass("row")
       var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto');
       $(newRow).append(divImg)
       $(newRow).append(pName);
       $(newRow).append(pDates);
       $(newRow).append(pTime);
       $(newRow).append(pVenue);
+
+      $(newRow).attr("storage-param", JSON.stringify(eventStorage));
+
       $("#showEvents").append(newRow);
 
     }
-
-    console.log(response)
-
   })
 };
 
@@ -90,15 +114,22 @@ $("#eventFinder").on("click", function () {
   buildQueryURL();
 })
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
-  authDomain: "project1-ec674.firebaseapp.com",
-  databaseURL: "https://project1-ec674.firebaseio.com",
-  projectId: "project1-ec674",
-  storageBucket: "",
-  messagingSenderId: "580863475932",
-  appId: "1:580863475932:web:a7813153dd7c134e"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
+
+$(document).on("click", "div" , function(event){
+  event.preventDefault();
+  // console.log($(this).attr("storage-param"))
+
+  if(event.target.className == "row result rowstyle mx-auto"){
+
+    var tempStorage = $(this).attr("storage-param");
+
+    eventStorage = JSON.parse(tempStorage);
+
+    console.log(eventStorage);
+
+    database.ref().push(eventStorage);
+  
+  }
+
+})

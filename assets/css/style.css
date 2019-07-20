@@ -3,11 +3,7 @@ body {
     font-size: 16px;
 }
 
-.logo{
-  position: absolute;
-  top: 100%;
-  left:150px;
-}
+
 
 .card {
   position: absolute;
@@ -68,9 +64,4 @@ body {
 .ticket_button {
   height: 30%;
 }
-
-.fixMargin {
-  margin-top: 50px;
-}
-
 

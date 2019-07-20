@@ -2,11 +2,7 @@ body {
     background-color: white;
 }
 
-.logo{
-  position: absolute;
-  top: 100%;
-  left:150px;
-}
+
 
 .card {
   position: absolute;
@@ -59,4 +55,12 @@ body {
   position: absolute;
 }
 
+.weather_button {
+  height: 30%;
+}
+
+
+.ticket_button {
+  height: 30%;
+}
 

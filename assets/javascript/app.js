@@ -1,11 +1,12 @@
-// let weatherDate = '';
+
 
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
   var localeSearch = "&city=" + $("#location").val();
-  var weatherLocale = $("#location").val();
+  var weatherLocale = $("#location").val().trim();
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var keywordSearch = "&keyword=" + $("#keyword").val();
+
 
   queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
 
@@ -14,19 +15,16 @@ function buildQueryURL() {
     url: 'https://cors-anywhere.herokuapp.com/' + queryURL,
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
   }).then(function (response) {
+    $('html, body').animate({
+      scrollTop: $("#showEvents").offset().top
+  }, 2000);
     console.log(response);
 
 
 
 // weather api 
 // weatherDate
-var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + weatherLocale + "&APPID=73aa9f49c204f7ee3c55d47346f4224a"
-$.ajax({
-  url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
-  headers: { 'X-Requested-With': 'XMLHttpRequest' },
-}).then(function (response) {
-  console.log(response);
-})
+
     // console.log(JSON.parse(response))
 
     // var data = response
@@ -62,14 +60,20 @@ $.ajax({
     for (var i = 0; i < 20; i++) {
       var data = response
       var results = data._embedded.events
-      console.log(results[i]);
       var data = results[i];
-   
+      var latitude = data._embedded.venues[0].location.latitude
+      var longitude = data._embedded.venues[0].location.longitude
+      var time = data.dates.start.localTime
+      
+      
+
+      
 
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
-      var pButton = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("check weather!").addClass("weather_button").attr("date",weatherDate)
-      var pButtonTicket = $("<button>").addClass("btn btn-outline-success btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
+      var pButton = $("<button>").addClass("btn btn-outline-light btn-sm").attr("type","button").html("check weather!").addClass("weather_button").attr("date",weatherDate).attr("latitude",latitude).attr("longitude",longitude).attr("time",time).addClass("myBtn")
+
+      var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url)
 
       weatherDate = data.dates.start.localDate
 
@@ -95,14 +99,43 @@ $.ajax({
     $(".weather_button").on("click", function(){
    
       var checkAttr = $(this).attr("date")
-      alert(checkAttr)
+      longitude = $(this).attr("longitude")
+      latitude = $(this).attr("latitude")
+       time = $(this).attr("time")
+
+    
+      var date = checkAttr + " " + time 
+      var unixtimestamp = (new Date(date.replace('-','/'))).getTime() / 1000;
+        alert(unixtimestamp);
+
+
+//       var weatherDate = $("#startDate").val() + " " + "00:00:00"
+// console.log(weatherDate)
+
+var weatherDate = unixtimestamp
+var weatherQueryURL = "https://api.darksky.net/forecast/f7aa1c7b917ea38ae0bd00bb098484a9/"  + latitude + "," + longitude + "," + weatherDate
+// var weatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + weatherLocale + "&APPID=73aa9f49c204f7ee3c55d47346f4224a"
+$.ajax({
+  url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
+  headers: { 'X-Requested-With': 'XMLHttpRequest' },
+}).then(function (response) {
+
+
+  console.log(response);
+  console.log(response.daily.data[0].icon)
+  console.log(response.daily.data[0].summary)
+  console.log(response.daily.data[0].temperatureHigh)
+
+})
      
     })
 
     $(".ticket_button").on("click", function(){
    
       var checkAttrTicket = $(this).attr("link")
-      alert(checkAttrTicket)
+      // window.location.href = checkAttrTicket
+      window.open(checkAttrTicket, '_blank');
+      
      
     })
     console.log(response)

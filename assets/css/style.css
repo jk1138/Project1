@@ -2,11 +2,7 @@ body {
     background-color: white;
 }
 
-.logo{
-  position: absolute;
-  top: 100%;
-  left:150px;
-}
+
 
 .card {
   position: absolute;

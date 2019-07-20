@@ -65,13 +65,6 @@ $.ajax({
       console.log(results[i]);
       var data = results[i];
    
-<<<<<<< HEAD
-      weatherDate = data.dates.start.localDate
-      var pName = $("<p>").text(data.name).addClass('col')
-      var pDates = $("<p>").text(data.dates.start.localDate).addClass('col')
-      var pTime = $("<p>").text(data.dates.start.localTime).addClass('col')
-      var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col')
-=======
 
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
@@ -85,7 +78,6 @@ $.ajax({
       var pTime = $("<p>").text(data.dates.start.localTime).addClass('col').addClass('resultfont')
       var pVenue = $("<p>").text(data._embedded.venues[0].name).addClass('col').addClass('resultfont')
 
->>>>>>> 2d08bda044127b2024df9c2aba59a1ec1507ff03
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('col')
       //  .addClass("row")
@@ -98,10 +90,7 @@ $.ajax({
       $(newRow).append(pButton)
       $(newRow).append(pButtonTicket)
       $("#showEvents").append(newRow);
-<<<<<<< HEAD
-=======
       
->>>>>>> 2d08bda044127b2024df9c2aba59a1ec1507ff03
     }
     $(".weather_button").on("click", function(){
    

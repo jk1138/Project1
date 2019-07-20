@@ -130,9 +130,6 @@ $.ajax({
   console.log(response.daily.data[0].temperatureHigh)
 
 })
-
-  
-  
     })
 
     $(".ticket_button").on("click", function(){

@@ -1,5 +1,6 @@
 body {
     background-color: white;
+    font-size: 16px;
 }
 
 .logo{
@@ -67,3 +68,9 @@ body {
 .ticket_button {
   height: 30%;
 }
+
+.fixMargin {
+  margin-top: 50px;
+}
+
+

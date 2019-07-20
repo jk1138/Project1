@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,7 +16,7 @@
 </head>
 
 <body class="filler">
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
     <!-- Navbar content -->
     <a class="navbar-brand" href="#">TrIvent</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -34,6 +35,7 @@
   </nav>
 
   <!-- background -->
+
   <div id="carouselHome" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -51,49 +53,112 @@
       <div class="carousel-item">
         <img class="d-block w-100" src="assets/images/slideshow/5.jpg" alt="Fifth slide">
       </div>
-    </div>
+
+      <br>
+
+      <div class="container">
+        <div class="row fixMargin">
+          <div class="col-md-6">
+            <!-- <div class="card card2"> -->
+            <!-- <div class="card-body"> -->
+            <h2 class="card-title">Welcome to TrIvent.</h2>
+            <p class="card-text">
+              TrIvent was designed to help you find upcoming events where you live and where you are going.
+            </p>
+            <p class="card-text">
+              Whether its a concert your looking to attend, a stand-up routine by your favorite comedian, or a
+              sporting
+              event with your favorite team, TrIvent can help you find when and where its going to happen.
+            </p>
+            <!-- </div> -->
+            <!-- </div> -->
+          </div>
+
+          <div class="col-md-6" style="width: 40rem;">
+            <form>
+              <h2>Lets Find Some Events</h2>
+              <div class="form-group">
+                <label for="search-parameters col-form-label">City</label>
+                <input type="text" class="form-control" id="location" placeholder="Chicago">
+              </div>
+
+              <div class="form-group">
+                <label for="search-parameters col-form-label">Find by:</label>
+                <input type="search" class="form-control" id="keyword" placeholder="Event, Artist, or Keyword">
+              </div>
+
+              <div class="form-group">
+                <label for="search-parameters col-form-label">Start date:</label>
+                <input type="date" class="form-control" id="startDate" placeholder="mm/dd/yyyy">
+              </div>
+
+              <div class="form-group">
+                <label for="search-parameters col-form-label">End date:</label>
+                <input type="date" class="form-control" id="endDate" placeholder="mm/dd/yyyy">
+              </div>
 
 
-    <div class="card" style="width: 30rem;">
-      <div class="card-body">
-        <h5 class="card-title">Let's find some events</h5>
-        <p class="card-text">
-          <form>
-            <div class="form-group">
-              <label for="search-parameters">City:</label>
-              <input type="text" class="form-control" id="location" placeholder="Chicago">
-            </div>
-            <div class="form-group">
-              <label for="search-parameters">Find by:</label>
-              <input type="search" class="form-control" id="keyword" placeholder="events, artist, or keyword">
-            </div>
-            <div class="form-group">
-              <label for="search-parameters">Start date:</label>
-              <input type="date" class="form-control" id="startDate" placeholder="mm/dd/yyyy">
-            </div>
-            <div class="form-group">
-              <label for="search-parameters">End date:</label>
-              <input type="date" class="form-control" id="endDate" placeholder="mm/dd/yyyy">
-            </div>
-          </form>
-        </p>
-        <button type="button" id="eventFinder" class="btn btn-secondary btn-lg">search</button>
+              <button type="submit" class="btn btn-secondary btn-lg" id="eventFinder">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="card card2" style="width: 40rem;">
-      <div class="card-body">
-        <h2 class="card-title">Welcome to TrIvent.</h2>
-        <p class="card-text">
-          TrIvent was designed to help you find upcoming events where you live and where you are going.
-        </p>
-        <p class="card-text">
-          Whether its a concert your looking to attend, a stand-up routine by your favorite comedian, or a sporting event with your favorite team, TrIvent can help you find when and where its going to happen.
-        </p>
-      </div>
-    </div>
 
+
+
+
+    </div>
   </div>
+
+  <!-- WORKS..................................................................... -->
+
+  <!-- welcome -->
+  <!-- <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="card card2">
+            <div class="card-body">
+              <h2 class="card-title">Welcome to TrIvent.</h2>
+              <p class="card-text">
+                TrIvent was designed to help you find upcoming events where you live and where you are going.
+              </p>
+              <p class="card-text">
+                Whether its a concert your looking to attend, a stand-up routine by your favorite comedian, or a
+                sporting
+                event with your favorite team, TrIvent can help you find when and where its going to happen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      </div>
+    </div> -->
+
+
+  <!-- .............................................................................................. -->
+
+  <!-- WORKS -->
+  <!-- WORKS -->
   <div class="container filler2" id=“eventResults”>
     <div id="showEvents">
       <div>
@@ -111,7 +176,7 @@
       <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
 
- 
+
 
       <!-- Add Firebase products that you want to use -->
       <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
@@ -119,25 +184,28 @@
 
       <script src="assets/javascript/app.js"></script>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="weather_button">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" class="weather_button">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 

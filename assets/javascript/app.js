@@ -5,6 +5,9 @@ function buildQueryURL() {
   var localeSearch = "&city=" + $("#location").val();
   var weatherLocale = $("#location").val().trim();
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
+  var dateSearch = $("#startDate").val();
+  var dateSearch = dateSearch + " 00:00:00"
+  console.log(dateSearch)
   var keywordSearch = "&keyword=" + $("#keyword").val();
 
 
@@ -127,7 +130,9 @@ $.ajax({
   console.log(response.daily.data[0].temperatureHigh)
 
 })
-     
+
+  
+  
     })
 
     $(".ticket_button").on("click", function(){

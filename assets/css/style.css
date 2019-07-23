@@ -76,7 +76,7 @@ body {
 		font-weight: 100;
     line-height: 1;
     color: white;
-    margin: 0 auto;
+    margin: 3% auto;
 }
 
 .month {
@@ -84,7 +84,7 @@ body {
 		font-weight: 900;
 		line-height: 1;
     color: white;
-    margin: 0 auto;
+    margin: 3% auto;
 }
 
 .result {
@@ -142,4 +142,11 @@ figure {
   text-align: center;
 }
 
+canvas{
+  
+}
 
+figure{
+  width: 70%;
+  height: 30%;
+}

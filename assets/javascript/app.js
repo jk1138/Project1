@@ -1,4 +1,22 @@
+// firebase
+var firebaseConfig = {
+    apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
+    authDomain: "project1-ec674.firebaseapp.com",
+    databaseURL: "https://project1-ec674.firebaseio.com",
+    projectId: "project1-ec674",
+    storageBucket: "",
+    messagingSenderId: "580863475932",
+    appId: "1:580863475932:web:a7813153dd7c134e"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    var eventStorage = {};
+/////////////////////////////////////////////////////////////////////////////////////////////
+  
+var localeSearch = "&city=" + $("#location").val();
 
+//==============================================================================================================
 
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
@@ -9,7 +27,6 @@ function buildQueryURL() {
   // var dateSearch = dateSearch + " 00:00:00"
  
   var keywordSearch = "&keyword=" + $("#keyword").val();
-
 
   queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
 
@@ -45,10 +62,10 @@ function buildQueryURL() {
 
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
-     var dates =  weatherDate.split("-")
-     console.log(dates)
-     var month = dates[1]
-     console.log(month)
+     var dates =  weatherDate.split("-") //new
+     console.log(dates) //new 
+     var month = dates[1] //new
+     console.log(month) //new
 
     //  if satement to make months single digits. If the first digit is zero, then grab the second number
      if (month[0] == 0) {
@@ -130,10 +147,25 @@ var month = (months[month])
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('row div_Img')
       var buttonDiv =$("<div>").addClass("row")
-     
-     
     
       console.log(num)
+
+      eventStorage = {
+        name: data.name,
+        venue: data._embedded.venues[0].name,
+        image: data.images[0].url,
+        
+        //========       NEW   ===================
+
+        weather_temp: temp,
+        weather_icon: icon,
+        weather_summary: summary, 
+        event_day: day,
+        event_month: month,
+        event_time: timeData,
+  
+      }
+
       var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto').attr("this_row", "iden" + num).addClass( "iden" + num )
       
       $(pButton).attr("this_row", "iden" + num)
@@ -251,19 +283,21 @@ $("#eventFinder").on("click", function () {
   
   buildQueryURL();
 })
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
-  authDomain: "project1-ec674.firebaseapp.com",
-  databaseURL: "https://project1-ec674.firebaseio.com",
-  projectId: "project1-ec674",
-  storageBucket: "",
-  messagingSenderId: "580863475932",
-  appId: "1:580863475932:web:a7813153dd7c134e"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-var localeSearch = "&city=" + $("#location").val();
-
-
+$(document).on("click", "div" , function(event){
+    event.preventDefault();
+    // console.log($(this).attr("storage-param"))
+  
+    if(event.target.className == "row result rowstyle mx-auto"){
+  
+      var tempStorage = $(this).attr("storage-param");
+  
+      eventStorage = JSON.parse(tempStorage);
+  
+      console.log(eventStorage);
+  
+      database.ref().push(eventStorage);
+    
+    }
+  
+  })

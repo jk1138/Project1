@@ -20,27 +20,24 @@ body {
 }
 
 .style {
-  width: 160px;
-  height: 90px;
+  width: 100%;
+  height: 100%;
 }
 
 
 
 .result:hover{
-  background-color: orange;
+
+  background-color: rgb(236, 247, 93);
   opacity: 80%;
   border: solid;
 }
 
-.rowstyle{
-  padding: 10px;
-  width: 90%;
-  text-align: center;
-}
+
 
 .resultfont{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 16px;
+ 
 }
 
 .filler{
@@ -56,11 +53,93 @@ body {
 }
 
 .weather_button {
-  height: 30%;
+ 
 }
 
 
 .ticket_button {
-  height: 30%;
+
 }
+
+/*  */
+
+.dates_purple {
+  background-color: rgb(169, 104, 230);
+}
+
+.dates_pink {
+  background-color: rgb(221, 101, 121);
+}
+
+.day {
+  font-size: 56pt;
+		font-weight: 100;
+    line-height: 1;
+    color: white;
+    margin: 0 auto;
+}
+
+.month {
+  font-size: 24pt;
+		font-weight: 900;
+		line-height: 1;
+    color: white;
+    margin: 0 auto;
+}
+
+.result {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 17pt;
+		font-weight: 700;
+		margin: 0px;
+}
+
+.venue {
+  font-size: 13pt;
+  font-weight: 300;
+  margin: 0px;
+}
+
+.button_style {
+  margin: 0 auto;
+}
+
+.time {
+  margin: 0px;
+}
+
+.img_style {
+  padding: 0px;
+}
+
+.div_Img {
+
+  width: 100%;
+  height: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+
+ 
+}
+
+.weather {
+  font-size: 13pt;
+  font-weight: 300;
+  margin: 0px;
+
+}
+
+figure {
+  height: 100%;
+  width: auto;
+}
+
+.weather {
+  text-align: center;
+}
+
 

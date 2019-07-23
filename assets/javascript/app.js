@@ -170,9 +170,6 @@ function buildQueryURL() {
 };
 
 
-
-
-
 $("#eventFinder").on("click", function () {
   buildQueryURL();
 })
@@ -195,4 +192,4 @@ $(document).on("click", "div" , function(event){
   
   }
 
-})
+});

@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://unpkg.com/micromodal/dist/micromodal.min.js">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
   <!-- <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase.js"></script> -->
+  <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 
 
   <title>Homepage</title>
@@ -58,54 +60,30 @@
         <img class="d-block w-100" src="assets/images/slideshow/5.jpg" alt="Fifth slide">
       </div>
 
-      <br>
-
-      <div class="container">
-        <div class="row fixMargin">
-          <div class="col-md-6">
-            <!-- <div class="card card2"> -->
-            <!-- <div class="card-body"> -->
-            <h2 class="card-title">Welcome to TrIvent.</h2>
-            <p class="card-text">
-              TrIvent was designed to help you find upcoming events where you live and where you are going.
-            </p>
-            <p class="card-text">
-              Whether its a concert your looking to attend, a stand-up routine by your favorite comedian, or a
-              sporting
-              event with your favorite team, TrIvent can help you find when and where its going to happen.
-            </p>
-            <!-- </div> -->
-            <!-- </div> -->
-          </div>
-
-          <div class="col-md-6" style="width: 40rem;">
-            <form>
-              <h2>Lets Find Some Events</h2>
-              <div class="form-group">
-                <label for="search-parameters col-form-label">City</label>
-                <input type="text" class="form-control" id="location" placeholder="Chicago">
-              </div>
-
-              <div class="form-group">
-                <label for="search-parameters col-form-label">Find by:</label>
-                <input type="search" class="form-control" id="keyword" placeholder="Event, Artist, or Keyword">
-              </div>
-
-              <div class="form-group">
-                <label for="search-parameters col-form-label">Start date:</label>
-                <input type="date" class="form-control" id="startDate" placeholder="mm/dd/yyyy">
-              </div>
-
-              <div class="form-group">
-                <label for="search-parameters col-form-label">End date:</label>
-                <input type="date" class="form-control" id="endDate" placeholder="mm/dd/yyyy">
-              </div>
-
-
-              <button type="submit" class="btn btn-secondary btn-lg" id="eventFinder">Submit</button>
-            </form>
-          </div>
-        </div>
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+        <h5 class="card-title">Let's find some events</h5>
+        <p class="card-text">
+          <form>
+            <div class="form-group">
+              <label for="search-parameters">City:</label>
+              <input type="text" class="form-control" id="location" placeholder="Chicago">
+            </div>
+            <div class="form-group">
+              <label for="search-parameters">Find by:</label>
+              <input type="search" class="form-control" id="keyword" placeholder="events, artist, or keyword">
+            </div>
+            <!-- <div class="form-group">
+              <label for="search-parameters">Start date:</label>
+              <input type="date" class="form-control" id="startDate" placeholder="mm/dd/yyyy">
+            </div>
+            <div class="form-group">
+              <label for="search-parameters">End date:</label>
+              <input type="date" class="form-control" id="endDate" placeholder="mm/dd/yyyy">
+            </div> -->
+          </form>
+        </p>
+        <button type="button" id="eventFinder" class="btn btn-secondary btn-lg">search</button>
       </div>
 
 
@@ -136,14 +114,14 @@
           </div>
         </div>
 
-    <div class="card card2" style="width: 40rem;">
+    <div class="card card2" style="width: 30rem;">
       <div class="card-body">
         <h2 class="card-title">Welcome to <img src="assets/images/logo.png" width="260" height="100" alt="logo for Trivent App"></h2>
         <p class="card-text">
           TrIvent was designed to help you find upcoming events where you live and where you are going.
         </p>
         <p class="card-text">
-          Whether its a concert your looking to attend, a stand-up routine by your favorite comedian, or a sporting event with your favorite team, TrIvent can help you find when and where its going to happen.
+          Whether its a concert you're looking to attend, a stand-up routine by your favorite comedian, or a sporting event with your favorite team, TrIvent can help you find when and where it's going to happen.
         </p>
       </div>
       </div>

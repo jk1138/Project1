@@ -1,4 +1,7 @@
 // firebase
+var temp = ""
+var icon = ""
+var summary = ""
 var firebaseConfig = {
     apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
     authDomain: "project1-ec674.firebaseapp.com",
@@ -25,7 +28,7 @@ function buildQueryURL() {
   // var dateSearch = "&startDateTime=" + $("#startdate").val();
   var dateSearch = $("#startDate").val();
   // var dateSearch = dateSearch + " 00:00:00"
- 
+
   var keywordSearch = "&keyword=" + $("#keyword").val();
 
   queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?" + apiKey + keywordSearch + localeSearch + "" + "&radius=15&units=miles";
@@ -37,14 +40,14 @@ function buildQueryURL() {
   }).then(function (response) {
     $('html, body').animate({
       scrollTop: $("#showEvents").offset().top
-  }, 2000);
+    }, 2000);
     console.log(response);
 
 
     $('#showEvents').empty()
     // starting boolean for the alternating colors if statement
     var isPurple = false
-    var num = 0; 
+    var num = 0;
 
     // for loop to run through response from ticketmaster
     for (var i = 0; i < 20; i++) {
@@ -55,8 +58,8 @@ function buildQueryURL() {
       var latitude = data._embedded.venues[0].location.latitude
       var longitude = data._embedded.venues[0].location.longitude
       var time = data.dates.start.localTime
-      
-      
+
+
 
       // grabbing the month and day of the date by splitting the date YYYY-MM-DD into an array of three elements, and then grabbing the month and day using indexes 
 
@@ -104,13 +107,13 @@ var month = (months[month])
       var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url).addClass("col-md-5 col-sm-6 pButtonTicket")
 // weather date variable stroes the date for each event
       weatherDate = data.dates.start.localDate
-    // function that converts time into unix time using moment.js
+      // function that converts time into unix time using moment.js
       function convert(input) {
         return moment(input, 'HH:mm:ss').format('h:mm A');
-    }
-    var timeData = data.dates.start.localTime
-    var timeData = convert(timeData)
-    // name of event
+      }
+      var timeData = data.dates.start.localTime
+      var timeData = convert(timeData)
+      // name of event
       var pName = $("<p>").text(data.name).addClass('row').addClass('resultfont').addClass("title")
       // var pDates = $("<p>").text(data.dates.start.localDate).addClass('row').addClass('resultfont')
       // time of event
@@ -123,22 +126,22 @@ var month = (months[month])
       var otherCol = $("<div>").addClass("col-md-4").addClass("other_col")
       // div for date information
       var dateDiv = $("<div>").addClass("col-md-2")
-      
+
       // if statement that alternates the colors of the date divs by changing classes styled by each color
       if (isPurple == false) {
         dateDiv.removeClass("dates_purple")
-         dateDiv.addClass("dates_pink")
+        dateDiv.addClass("dates_pink")
         var isPurple = true
       }
 
-      else if (isPurple == true ) {
+      else if (isPurple == true) {
         dateDiv.removeClass("dates_pink")
         dateDiv.addClass("dates_purple")
         var isPurple = false
       }
 
-    
-    //  divs that contain elements with information about the event
+
+      //  divs that contain elements with information about the event
       var monthDiv = $("<div>").addClass("row")
       var monthP = $("<p>").text(month).addClass("month").addClass("align-self-center")
       var dayDiv = $("<div>").addClass("row")
@@ -180,7 +183,7 @@ var month = (months[month])
       $(newRow).append(dateDiv)
       $(buttonDiv).append(pButton)
       $(buttonDiv).append(pButtonTicket)
-     
+
       $(imgCol).append(divImg)
       $(newRow).append(imgCol)
       $(newRow).append(otherCol)
@@ -188,90 +191,90 @@ var month = (months[month])
       $(otherCol).append(pTime);
       $(otherCol).append(pVenue);
       $(otherCol).append(buttonDiv)
-    
-     
-      
+
+
+
       $("#showEvents").append(newRow);
-      
+
     }
-    $(".weather_button").on("click", function(){
+    $(".weather_button").on("click", function () {
       // $(this).innerHTML("disabled")
       var whichRow = $(this).attr("this_row")
       console.log(whichRow)
-      
+
       var checkAttr = $(this).attr("date")
       longitude = $(this).attr("longitude")
       latitude = $(this).attr("latitude")
-       time = $(this).attr("time")
+      time = $(this).attr("time")
 
-    
-      var date = checkAttr + " " + time 
-      var unixtimestamp = (new Date(date.replace('-','/'))).getTime() / 1000;
-   
 
+      var date = checkAttr + " " + time
+      var unixtimestamp = (new Date(date.replace('-', '/'))).getTime() / 1000;
 
 
 
-var weatherDate = unixtimestamp
-var weatherQueryURL = "https://api.darksky.net/forecast/f7aa1c7b917ea38ae0bd00bb098484a9/"  + latitude + "," + longitude + "," + weatherDate
-
-$.ajax({
-  url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
-  headers: { 'X-Requested-With': 'XMLHttpRequest' },
-}).then(function (response) {
-
-// obtains info 
-  console.log(response);
-  // variables that hold info about the weather
-  var icon = (response.daily.data[0].icon)
-  var summary = (response.daily.data[0].summary)
-  var temp = (response.daily.data[0].temperatureHigh)
-  pButton.attr("icon_id",icon)
-  var icon_to_use = $(pButton).attr("icon_id")
 
 
-  var weatherInfo = $('<div>').addClass("col-md-3").addClass("weather")
-      var weatherIcon = $('<p>').text(icon)
-      var weatherSummary = $('<p>').text(summary)
-      var weatherTemp = $('<p>').text(temp + "°F")
-      // $(weatherInfo).append(weatherIcon)
-      $(weatherInfo).append(weatherTemp)
-      $(weatherInfo).append(weatherSummary)
+      var weatherDate = unixtimestamp
+      var weatherQueryURL = "https://api.darksky.net/forecast/f7aa1c7b917ea38ae0bd00bb098484a9/" + latitude + "," + longitude + "," + weatherDate
 
-      
-      $("." + whichRow).append(weatherInfo)
-      // SKYCONS divs
-      var figure = $("<figure>")
-      console.log(icon)
-      var canvas = $("<canvas>").attr("id",icon_to_use).addClass(whichRow).addClass("col")
-      $(figure).append(canvas)
-  $(weatherInfo).append(figure)
+      $.ajax({
+        url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      }).then(function (response) {
+
+        // obtains info 
+        console.log(response);
+        // variables that hold info about the weather
+        icon = (response.daily.data[0].icon)
+         summary = (response.daily.data[0].summary)
+        temp = (response.daily.data[0].temperatureHigh)
+        pButton.attr("icon_id", icon)
+        var icon_to_use = $(pButton).attr("icon_id")
 
 
-//  SKYCONS info
+        var weatherInfo = $('<div>').addClass("col-md-3").addClass("weather")
+        var weatherIcon = $('<p>').text(icon)
+        var weatherSummary = $('<p>').text(summary)
+        var weatherTemp = $('<p>').text(temp + "°F")
+        // $(weatherInfo).append(weatherIcon)
+        $(weatherInfo).append(weatherTemp)
+        $(weatherInfo).append(weatherSummary)
 
-  var icons = new Skycons({ "color": "black" });
-  icons.set("clear-day", Skycons.CLEAR_DAY);
-  icons.set("clear-night", Skycons.CLEAR_NIGHT);
-  icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-  icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
-  icons.set("cloudy", Skycons.CLOUDY);
-  icons.set("rain", Skycons.RAIN);
-  icons.set("sleet", Skycons.SLEET);
-  icons.set("snow", Skycons.SNOW);
-  icons.set("wind", Skycons.WIND);
-  icons.set("fog", Skycons.FOG);
-  icons.play();
 
-})
+        $("." + whichRow).append(weatherInfo)
+        // SKYCONS divs
+        var figure = $("<figure>")
+        console.log(icon)
+        var canvas = $("<canvas>").attr("id", icon_to_use).addClass(whichRow).addClass("col")
+        $(figure).append(canvas)
+        $(weatherInfo).append(figure)
+
+
+        //  SKYCONS info
+
+        var icons = new Skycons({ "color": "black" });
+        icons.set("clear-day", Skycons.CLEAR_DAY);
+        icons.set("clear-night", Skycons.CLEAR_NIGHT);
+        icons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
+        icons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
+        icons.set("cloudy", Skycons.CLOUDY);
+        icons.set("rain", Skycons.RAIN);
+        icons.set("sleet", Skycons.SLEET);
+        icons.set("snow", Skycons.SNOW);
+        icons.set("wind", Skycons.WIND);
+        icons.set("fog", Skycons.FOG);
+        icons.play();
+
+      })
     })
 
-    $(".ticket_button").on("click", function(){
-  //  takes user to ticketmaster site using previously assigned attribute being the link url
+    $(".ticket_button").on("click", function () {
+      //  takes user to ticketmaster site using previously assigned attribute being the link url
       var checkAttrTicket = $(this).attr("link")
       window.open(checkAttrTicket, '_blank');
-      
-     
+
+
     })
     console.log(response)
 
@@ -280,7 +283,7 @@ $.ajax({
 
 
 $("#eventFinder").on("click", function () {
-  
+
   buildQueryURL();
 })
 

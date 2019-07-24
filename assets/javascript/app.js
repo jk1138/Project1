@@ -3,24 +3,21 @@ var temp = ""
 var icon = ""
 var summary = ""
 var firebaseConfig = {
-    apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
-    authDomain: "project1-ec674.firebaseapp.com",
-    databaseURL: "https://project1-ec674.firebaseio.com",
-    projectId: "project1-ec674",
-    storageBucket: "",
-    messagingSenderId: "580863475932",
-    appId: "1:580863475932:web:a7813153dd7c134e"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
-    var eventStorage = {};
-/////////////////////////////////////////////////////////////////////////////////////////////
-  
-var localeSearch = "&city=" + $("#location").val();
+  apiKey: "AIzaSyDh5DPIlsYtfh4x-PeXsQrNS2l20zxPxPs",
+  authDomain: "project1-ec674.firebaseapp.com",
+  databaseURL: "https://project1-ec674.firebaseio.com",
+  projectId: "project1-ec674",
+  storageBucket: "",
+  messagingSenderId: "580863475932",
+  appId: "1:580863475932:web:a7813153dd7c134e"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var eventStorage = {};
 
 //==============================================================================================================
-
 function buildQueryURL() {
   apiKey = "&apikey=WJCRVoCmP83xVzLx0AUyj20UyFAAKNbS";
   var localeSearch = "&city=" + $("#location").val();
@@ -65,47 +62,47 @@ function buildQueryURL() {
 
       var weatherDate = data.dates.start.localDate
       console.log(weatherDate)
-     var dates =  weatherDate.split("-") //new
-     console.log(dates) //new 
-     var month = dates[1] //new
-     console.log(month) //new
+      var dates = weatherDate.split("-") //new
+      console.log(dates) //new 
+      var month = dates[1] //new
+      console.log(month) //new
 
-    //  if satement to make months single digits. If the first digit is zero, then grab the second number
-     if (month[0] == 0) {
-     var month = dates[1].slice(-1)
-     console.log(month)
-     }
-    //  if months' first digit is not zero, then the month value stays the same
-     else if (month[0] ==! 0) {
-       var month = month
-     }
-     var day = dates[2]
-     console.log(month)
- var months = [
-   "empty",
-      "Jan",
-       "Feb",
-       "Mar",
-     "Apr",
-       "May",
-      "Jun",
-      "July",
-      "Aug",
-       "Sept",
-     "Oct",
-      "Nov",
-       "Dec",
- ]
-// months[0] will be empty, months[1] will be Jan, months[2] will be Feb,.etc
-// months[month] means the array above uses month from event(formatted by previous if statement)
-var month = (months[month])
+      //  if satement to make months single digits. If the first digit is zero, then grab the second number
+      if (month[0] == 0) {
+        var month = dates[1].slice(-1)
+        console.log(month)
+      }
+      //  if months' first digit is not zero, then the month value stays the same
+      else if (month[0] == !0) {
+        var month = month
+      }
+      var day = dates[2]
+      console.log(month)
+      var months = [
+        "empty",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "July",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec",
+      ]
+      // months[0] will be empty, months[1] will be Jan, months[2] will be Feb,.etc
+      // months[month] means the array above uses month from event(formatted by previous if statement)
+      var month = (months[month])
 
 
-    // button that checks for weather information
-      var pButton = $("<button>").addClass("btn btn-outline-primary btn-sm").attr("type","button").html("Weather!").addClass("weather_button").attr("date",weatherDate).attr("latitude",latitude).attr("longitude",longitude).attr("time",time).addClass("col-md-5 col-sm-6 pButton")
-// button that takes user to ticketmaster website for tickets
-      var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type","button").attr("data-toggle","modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link",data.url).addClass("col-md-5 col-sm-6 pButtonTicket")
-// weather date variable stroes the date for each event
+      // button that checks for weather information
+      var pButton = $("<button>").addClass("btn btn-outline-primary btn-sm").attr("type", "button").html("Weather!").addClass("weather_button").attr("date", weatherDate).attr("latitude", latitude).attr("longitude", longitude).attr("time", time).addClass("col-md-5 col-sm-6 pButton")
+      // button that takes user to ticketmaster website for tickets
+      var pButtonTicket = $("<button>").addClass("btn btn-outline-dark btn-sm").attr("type", "button").attr("data-toggle", "modal").attr("data-target", "#exampleModal").html("Buy tickets!").addClass("ticket_button").attr("link", data.url).addClass("col-md-5 col-sm-6 pButtonTicket")
+      // weather date variable stroes the date for each event
       weatherDate = data.dates.start.localDate
       // function that converts time into unix time using moment.js
       function convert(input) {
@@ -149,28 +146,28 @@ var month = (months[month])
 
       var img = $("<img>").attr("src", data.images[0].url).addClass('style')
       var divImg = $("<div>").append(img).addClass('row div_Img')
-      var buttonDiv =$("<div>").addClass("row")
-    
+      var buttonDiv = $("<div>").addClass("row")
+
       console.log(num)
 
       eventStorage = {
         name: data.name,
         venue: data._embedded.venues[0].name,
         image: data.images[0].url,
-        
+
         //========       NEW   ===================
 
         weather_temp: temp,
         weather_icon: icon,
-        weather_summary: summary, 
+        weather_summary: summary,
         event_day: day,
         event_month: month,
         event_time: timeData,
-  
+
       }
 
-      var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto').attr("this_row", "iden" + num).addClass( "iden" + num )
-      
+      var newRow = $("<div>").addClass('row').addClass('result').addClass('rowstyle').addClass('mx-auto').attr("this_row", "iden" + num).addClass("iden" + num)
+
       $(pButton).attr("this_row", "iden" + num)
       console.log($(newRow).attr("this_row"))
       console.log($(pButton).attr("this_row"))
@@ -227,7 +224,7 @@ var month = (months[month])
         console.log(response);
         // variables that hold info about the weather
         icon = (response.daily.data[0].icon)
-         summary = (response.daily.data[0].summary)
+        summary = (response.daily.data[0].summary)
         temp = (response.daily.data[0].temperatureHigh)
         pButton.attr("icon_id", icon)
         var icon_to_use = $(pButton).attr("icon_id")
@@ -287,20 +284,20 @@ $("#eventFinder").on("click", function () {
   buildQueryURL();
 })
 
-$(document).on("click", "div" , function(event){
-    event.preventDefault();
-    // console.log($(this).attr("storage-param"))
-  
-    if(event.target.attr == "this_row"){
-  
-      var tempStorage = $(this).attr("storage-param");
-  
-      eventStorage = JSON.parse(tempStorage);
-  
-      console.log(eventStorage);
-  
-      database.ref().push(eventStorage);
-    
-    }
-  
-  })
+$(document).on("click", "div", function (event) {
+  event.preventDefault();
+  // console.log($(this).attr("storage-param"))
+
+  if (event.target.className == "row result rowstyle mx-auto") {
+
+    var tempStorage = $(this).attr("storage-param");
+
+    eventStorage = JSON.parse(tempStorage);
+
+    console.log(eventStorage);
+
+    database.ref().push(eventStorage);
+
+  }
+
+})

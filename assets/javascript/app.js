@@ -170,7 +170,6 @@ function buildQueryURL() {
 
       $(pButton).attr("this_row", "iden" + num)
       console.log($(newRow).attr("this_row"))
-      console.log($(pButton).attr("this_row"))
       num++
       console.log(num)
       $(dayDiv).append(dayP)
@@ -195,6 +194,7 @@ function buildQueryURL() {
 
     }
     $(".weather_button").on("click", function () {
+      $('.weather').remove()
       // $(this).innerHTML("disabled")
       var whichRow = $(this).attr("this_row")
       console.log(whichRow)

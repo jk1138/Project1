@@ -203,35 +203,6 @@ function buildQueryURL() {
       longitude = $(this).attr("longitude")
       latitude = $(this).attr("latitude")
       time = $(this).attr("time")
-<<<<<<< HEAD
-
-
-      var date = checkAttr + " " + time
-      var unixtimestamp = (new Date(date.replace('-', '/'))).getTime() / 1000;
-
-
-
-
-
-      var weatherDate = unixtimestamp
-      var weatherQueryURL = "https://api.darksky.net/forecast/f7aa1c7b917ea38ae0bd00bb098484a9/" + latitude + "," + longitude + "," + weatherDate
-
-      $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/' + weatherQueryURL,
-        headers: { 'X-Requested-With': 'XMLHttpRequest' },
-      }).then(function (response) {
-
-        // obtains info 
-        console.log(response);
-        // variables that hold info about the weather
-        var icon = (response.daily.data[0].icon)
-        var summary = (response.daily.data[0].summary)
-        var temp = (response.daily.data[0].temperatureHigh)
-        pButton.attr("icon_id", icon)
-        var icon_to_use = $(pButton).attr("icon_id")
-
-
-=======
 
 
       var date = checkAttr + " " + time
@@ -253,13 +224,12 @@ function buildQueryURL() {
         console.log(response);
         // variables that hold info about the weather
         icon = (response.daily.data[0].icon)
-         summary = (response.daily.data[0].summary)
+        summary = (response.daily.data[0].summary)
         temp = (response.daily.data[0].temperatureHigh)
         pButton.attr("icon_id", icon)
         var icon_to_use = $(pButton).attr("icon_id")
 
 
->>>>>>> 41027682ac1fb209d63d7e1b5a2679e4e12300b9
         var weatherInfo = $('<div>').addClass("col-md-3").addClass("weather")
         var weatherIcon = $('<p>').text(icon)
         var weatherSummary = $('<p>').text(summary)

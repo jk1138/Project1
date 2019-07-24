@@ -2,8 +2,6 @@ body {
     background-color: white;
 }
 
-
-
 .card {
   position: absolute;
   top:100px; 
@@ -54,14 +52,7 @@ body {
   position: absolute;
 }
 
-.weather_button {
- 
-}
 
-
-.ticket_button {
-
-}
 
 /*  */
 
@@ -132,17 +123,15 @@ body {
   font-size: 13pt;
   font-weight: 300;
   margin: 0px;
+  text-align: center;
 
 }
 
-figure {
+/* figure {
   height: 100%;
   width: auto;
-}
+} */
 
-.weather {
-  text-align: center;
-}
 
 figure{
   width: 70%;
@@ -150,7 +139,7 @@ figure{
 }
 
 /********************************** MEDIA QUERIES *******************************/
-@media only screen and (min-width: 400px) and (max-width:670px) {
+@media only screen and (min-width: 400px) and (max-width:670px) { 
   /* For mobile phones: */
   .card {
     position: static;
@@ -160,17 +149,17 @@ figure{
     position: static;
     width: 32rem;
   }
-}  
+}
 
-@media only screen and (min-width:770px) and (max-width: 900px) {
+@media only screen and (min-width:768px)  {
   /* For tablets: */
   .card {
-    position: static;
-    right: 0px;
+    position: absolute;
+    right: 60px;
     
   }
   .card2{
-    position: static;
-    left: 0px;
+    position: absolute;
+    left: 60px;
   }
 }

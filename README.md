@@ -1,6 +1,6 @@
-# Project1
+# TrIvent
 
-This is the first bootcamp group project. It is a travel web application called TrIvent, and the primary purpose is to search for events happening in a particular city. 
+This is a travel web application called TrIvent, and the primary purpose is to search for events happening in a particular city. 
 
 Once the event results populate, the user can check the weather for that day (if applicable) and purchase tickets for the event.
 
